@@ -28,3 +28,9 @@ CREATE TABLE customer_orders (
   quantity int,
   amount double(10,2)
 ) ;
+
+insert into customer values(1,'mayank','mayank@gmail.com','1234','amritsar punjab','9803538343','male');
+insert into customer values(2,'joti','sadas@gmail.com','12344','Chennai Tamil Nadu','9815545843','female');
+
+insert into customer_orders values(1,'shoes',3,50,255000);
+insert into customer_orders values(1,'shoes',2,50,55000);
