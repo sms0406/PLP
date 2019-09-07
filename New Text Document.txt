@@ -1,0 +1,41 @@
+import java.math.BigInteger;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
+
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+import Decoder.BASE64Decoder;s
+
+public static void main(String[] args)
+    {
+        String passwordToHash = "1234";
+        String generatedPassword = null;
+        try {
+            
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            
+            md.update(passwordToHash.getBytes());
+            
+            byte[] bytes = md.digest();
+            
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println(generatedPassword);
+        
