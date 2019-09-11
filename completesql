@@ -1,23 +1,3 @@
-create database jpa;
-
-use jpa;
-create table trainee(traineeid int primary key, traineename varchar(20), traineedomain varchar(20),traineelocation varchar(20));
-drop table trainee;
-select * from trainee;
-
-
-create database spring;
-use spring;
-create table orders(id int primary key auto_increment, price double,quantity int,amount double,charges double);
-select * from orders;
-create table accounts( name varchar(10), custid int primary key  , age int , balance int , accno int);
-desc accounts;
-drop table accounts;
-select * from accounts;
-delete from accounts where custid=0;
-use jpa;
-select * from account;
-select * from account;
 
 create database capstore;
 use capstore;
@@ -76,3 +56,42 @@ insert into merchant values(1008,"Raju Enterprises","Direct","1234567890","raju@
 insert into product values(164, 'Shorts', 20000, 5, 6, "Shorts", "Jockey", "https://www.flightclub.com/media/catalog/product/cache/1/image/1600x1140/9df78eab33525d08d6e5fb8d27136e95/0/1/012234_01.jpg", 1003);
 insert into product values(45, 'Shorts', 20000, 5, 6, "Shorts", "Jockey", "https://images-na.ssl-images-amazon.com/images/I/91PCcXLqBoL._UX385_.jpg", 1001);
 
+use capStore;
+select * from customer;
+desc customer;
+drop table customer;
+desc adminlogin;
+drop table adminlogin;
+create table adminlogin(admin_Id int(11) primary key auto_increment,name varchar(20),email varchar(30),password varchar(100),mobno varchar(20));
+select * from adminLogin;
+insert into adminlogin values(1,'mayank','mayank@gmail.com','1234','9803538343');
+insert into adminlogin values(2,'mayank','mayank@gmail.com','xeGGw+7a9/rRrt5FogXLqQ==','9803538343');
+delete from adminlogin where admin_Id=1;
+CREATE TABLE customer(
+  customer_id int(25) PRIMARY KEY auto_increment,
+  name varchar(50) Not NULL,
+  email varchar(50) NOT NULL,
+  password varchar(20) NOT NULL,
+  address varchar(50) NOT NULL,
+  mobile_no varchar(12) NOT NULL
+);
+create table merchant(merchant_Id bigint primary key auto_increment,merchant_Name  varchar(40) not null,phone_No varchar(10) not null, email varchar(50) not null,password varchar(100),govt_Proof_Type  varchar(10),govt_Proof varchar(16));
+drop table merchant;
+desc merchant;
+select * from merchant;
+truncate merchant;
+alter table merchant drop column merchant_type;
+insert into merchant values(1003,'Ram','9803538343','ram@gmail.com','1234','Aadhar','1234564897');
+
+insert into customer values(1,'mayank','mayank@gmail.com','123456','amritsar punjab','9803538343');
+insert into customer values(2,'mudit','mudit@gmail.com','123456','chandigarh punjab','9999999888');
+insert into merchant values(1001,'Raghu','9803555559','raghu@gmail.com','xeGGw+7a9/rRrt5FogXLqQ==','PAN',1234);
+insert into merchant values(1002,'Gobind','9874654666','gobind@gmail.com','xeGGw+7a9/rRrt5FogXLqQ==','PAN',1234);
+
+create table product(prod_Id bigint primary key auto_increment, prod_Name varchar(50) not null, prod_Price double(10,2) not null, prod_Quantity bigint not null, prod_Discount double(6,2) not null, prod_Category varchar(50) not null, prod_Desc varchar(500) not null, prod_Image varchar(150), merchant_Id bigint references merchant(merchant_Id));
+desc merchant;
+desc product;
+insert into product values(164, 'Shorts', 20000, 5, 6, "Shorts", "Jockey", "https://www.flightclub.com/media/catalog/product/cache/1/image/1600x1140/9df78eab33525d08d6e5fb8d27136e95/0/1/012234_01.jpg", 1003);
+insert into product values(45, 'Shorts', 20000, 5, 6, "Shorts", "Jockey", "https://images-na.ssl-images-amazon.com/images/I/91PCcXLqBoL._UX385_.jpg", 1001);
+
+select * from customer;
